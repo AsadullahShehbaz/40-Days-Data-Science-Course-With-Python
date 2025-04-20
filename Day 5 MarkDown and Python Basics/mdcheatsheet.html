@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mdcheatsheet.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="table-of-content">Table of Content :</h1>
+<p><a href="#1-headings">Chapter 1 : Heading</a><br>
+<a href="#2-special-text-formatting">Chapter 2 : Block of Words</a><br>
+<a href="#3-line-breaks">Chapter 3 : Line Breaks</a><br>
+<a href="#4-combine-heading-and-words">Chapter 4 : Combine Heading and words</a><br>
+<a href="#5-face-of-text">Chapter 5 : Face of Text</a><br>
+<a href="#6-bullet-points--list">Chapter 6 : Bullet Points / List</a><br>
+<a href="#7-line-breaks">Chapter 7 : 3 Ways of Line Break </a><br>
+<a href="#8-links-and-hyperlink">Chapter 8 : Links and HyperLink</a><br>
+<a href="#9-images-and-figures-with-link">Chapter 9 : Images and Figures with Link</a><br>
+<a href="#10-add-code-and-code-block">Chapter 10 : Add Code &amp; Code Block</a><br>
+<a href="#11-add-tables">Chapter 11 : Tables </a></p>
+<h1 id="1-headings">1. Headings</h1>
+<p>To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level.</p>
+<p>For example, to create a heading , number signs (e.g., # My Header).</p>
+<h1 id="heading-h1">Heading h1</h1>
+<h2 id="heading-h2">Heading h2</h2>
+<h3 id="heading-h3">Heading h3</h3>
+<h4 id="heading-h4">Heading h4</h4>
+<h1 id="2-special-text-formatting">2. Special Text Formatting</h1>
+<p>To create paragraphs, use a blank line to separate one or more lines of text.</p>
+<p>To create a blockquote, add a <code>&gt;</code> in front of a paragraph.</p>
+<blockquote>
+<p>This is special text of markdown</p>
+</blockquote>
+<p>Blockquotes can be nested. Add a<code> &gt;&gt;</code> in front of the paragraph you want to nest.</p>
+<blockquote>
+<p>Heading 1</p>
+<blockquote>
+<p>Heading 2</p>
+</blockquote>
+</blockquote>
+<h1 id="3-line-breaks">3. Line breaks</h1>
+<p>This is first line of course of markdown full tutorial in 72 minutes at codanics.
+website with instructor baba ammaar</p>
+<p>This is second line</p>
+<h1 id="4-combine-heading-and-words">4. Combine heading and words</h1>
+<blockquote>
+<h2 id="heading-h2">Heading h2</h2>
+</blockquote>
+<h1 id="5-face-of-text">5. Face of Text</h1>
+<p>To create bold text, surround the text with double asterisks (e.g., <code>**bold text**</code></p>
+<p><strong>bold</strong></p>
+<p><em>italic</em></p>
+<p><em><strong>bold and italic</strong></em></p>
+<p>you can use bold and italic with underscore</p>
+<p><strong>bold</strong></p>
+<p><em>italic</em></p>
+<blockquote>
+<p>Write in Comments for bold and italic</p>
+</blockquote>
+<p><em><strong>bold and italic</strong></em></p>
+<h1 id="6-bullet-points--list">6. Bullet Points / List</h1>
+<p>To create an unordered list, add dashes <code>(-)</code>, asterisks <code>(*)</code>, or plus signs <code>(+)</code> in front of line items. Indent one or more items to create a nested list.</p>
+<ul>
+<li>Day 1</li>
+<li>Day 2</li>
+<li>Day 3</li>
+<li>Day 4</li>
+<li>Day 5
+<ul>
+<li>Day 5.1</li>
+<li>Day 5.2
+<ul>
+<li>Subheading of subheading</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Day 6
+<ul>
+<li>Day 6.1</li>
+</ul>
+<ul>
+<li>Day 6.2</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Numbering of List</p>
+</blockquote>
+<pre><code>1.Day-1
+
+2.Day-2
+
+3.Day-3
+</code></pre>
+<h1 id="7-line-breaks">7. LINE BREAKS</h1>
+<p>To create a horizontal rule, use three or more asterisks <code>(***)</code>, dashes <code>(---)</code>, or underscores <code>(___)</code> on a line by themselves.</p>
+<hr>
+<hr>
+<hr>
+<h1 id="8-links-and-hyperlink">8. Links and Hyperlink</h1>
+<p>To create a link, enclose the link text in brackets (e.g., <code>[Duck Duck Go]</code>) and then follow it immediately with the URL in parentheses (e.g., <code>(https://duckduckgo.com)</code>).</p>
+<p><a href="https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/">Codanics Full Markdown Course </a></p>
+<h3 id="this-is-the-hyperlink">This is the hyperlink :</h3>
+<p>To quickly turn a URL or email address into a link, enclose it in angle brackets.</p>
+<p><a href="https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/">https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/</a></p>
+<p>Full Course of Markdown at Codanics is <a href="https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/">here</a></p>
+<h1 id="9-images-and-figures-with-link">9. Images and Figures with link</h1>
+<p>Use square bracket for label and round bracket for link of image</p>
+<blockquote>
+<p>This is beautiful image of ocean  logo</p>
+</blockquote>
+<p><img src="asthetic.webp" alt="Ashthetic"></p>
+<blockquote>
+<p>Comments in Markdown and Shortcut</p>
+</blockquote>
+<p>This is comment shortcut <strong>ctrl+/</strong> <em>like html</em></p>
+<!-- This is comment ctrl+/ like html --> 
+<h1 id="10-add-code-and-code-block">10. Add Code and Code Block</h1>
+<p>To denote a word or phrase as code, enclose it in backticks (`).</p>
+<p><code>print(&quot;This is a string&quot;)</code></p>
+<p><code>print(&quot;This is string method of python &quot;)</code></p>
+<p>Use 3 tick to add code block</p>
+<blockquote>
+<p>This Code will show code block with python syntax to sum two numbers</p>
+</blockquote>
+<pre class="hljs"><code><div>x = <span class="hljs-number">10</span>
+y= <span class="hljs-number">12</span>
+z = x+y
+print(z)
+</div></code></pre>
+<h1 id="11-add-tables">11. Add Tables :</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Name</th>
+<th style="text-align:center">Roll No.</th>
+<th style="text-align:center">Department</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Faheem</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">Web Developer</td>
+</tr>
+<tr>
+<td style="text-align:center">Mahmood</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">UI / UX</td>
+</tr>
+<tr>
+<td style="text-align:center">Tahseen</td>
+<td style="text-align:center">13</td>
+<td style="text-align:center">Graphic Designer</td>
+</tr>
+<tr>
+<td style="text-align:center">Fareed</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">Data Engineer</td>
+</tr>
+<tr>
+<td style="text-align:center">Abdul Aziz</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">Youtuber</td>
+</tr>
+</tbody>
+</table>
+<h1 id="13-install-extensions">13. Install Extensions</h1>
+<p>This is Course of Markdown at Codanics :</p>
+<p><a href="https://codanics.com/courses/python-ka-chilla-for-data-science-40-days-of-python-for-data-science/lesson/markdown-language-crash-course/">Markdown Full Course</a></p>
+<h1 id="heading">heading</h1>
+
+</body>
+</html>
